@@ -13,6 +13,7 @@ from homeassistant.const import (
     UnitOfPressure,
     UnitOfVolume,
     PERCENTAGE,
+    Calo,
 )
 
 from .api_types import GoogleFitSensorDescription
@@ -42,6 +43,7 @@ DEFAULT_ACCESS = [
     "https://www.googleapis.com/auth/fitness.blood_pressure.read",
     "https://www.googleapis.com/auth/fitness.heart_rate.read",
     "https://www.googleapis.com/auth/fitness.oxygen_saturation.read",
+
 ]
 
 # Sleep Data Enum. Taken from:
@@ -237,6 +239,20 @@ ENTITY_DESCRIPTIONS = (
         source="derived:com.google.oxygen_saturation:com.google.android.gms:merged",
         data_key="oxygenSaturation",
     ),
+
+
+
+     GoogleFitSensorDescription(
+        key="google_fit",
+        name="BMR",
+        icon="mdi:water-percent",
+        native_unit_of_measurement=Calo,
+        state_class=SensorStateClass.MEASUREMENT,
+        device_class=None,
+        source="derived:com.google.calories.bmr:com.google.android.gms:merged",
+        data_key="bmr",
+    ),
+    
 
 
 
